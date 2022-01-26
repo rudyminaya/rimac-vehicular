@@ -2,5 +2,13 @@
     .mainContainer {
         display: grid;
         grid-template-columns: 1fr 1fr;
+        min-height: 100vh;
+    }
+    .formContainer {
+        display: flex;
+        justify-content: center;
+        min-height: 100vh;
+        padding-right: 10rem;
+        padding-top: 10rem;
     }
 }

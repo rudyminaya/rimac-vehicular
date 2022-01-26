@@ -5,6 +5,7 @@ import Presentation, {
 } from '../components/home/presentation'
 import styles from '../styles/home.module.scss'
 import { useMediaQuery } from 'react-responsive'
+import ValidateForm from '../components/home/validateForm'
 
 const Home: NextPage = () => {
     const DesktopScreen = useMediaQuery({ query: '(min-width:768px' })
@@ -26,13 +27,9 @@ const Home: NextPage = () => {
                             : TYPE_PRESENTATION.mobile
                     }
                 />
-                <div
-                    style={{
-                        width: '100%',
-                        height: '100vh',
-                        background: '#20a6ff',
-                    }}
-                ></div>
+                <div className={styles.formContainer}>
+                    <ValidateForm />
+                </div>
             </div>
         </>
     )
