@@ -18,7 +18,7 @@ const HeaderPage = (props: Props) => {
             className={
                 props.type === TYPE_HEADER.bg
                     ? `${styles.headerbg} ${styles.header}`
-                    : styles.header
+                    : `${styles.headernobg} ${styles.header}`
             }
         >
             <div className={styles.header__content}>

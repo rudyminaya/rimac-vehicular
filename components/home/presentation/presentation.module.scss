@@ -1,0 +1,92 @@
+@import '../../../styles/variables';
+.presentation {
+    padding-top: 4rem;
+    background: $graybg;
+    margin-bottom: 4rem;
+    position: relative;
+    min-height: 310px;
+
+    &__content {
+        display: flex;
+        margin: 0 auto;
+        width: 100%;
+        height: 100%;
+    }
+
+    &__text {
+        padding: 3rem 2rem;
+        margin: 0 auto;
+        height: 100%;
+        height: 250px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        &__title {
+            display: none;
+        }
+    }
+
+    &__imagen {
+        min-width: 112px;
+        position: relative;
+        min-height: 250px;
+
+        & > img {
+            width: 100%;
+            height: auto;
+            max-width: 112px;
+            position: absolute;
+            right: 0;
+            bottom: -2rem;
+        }
+    }
+    &__copyright {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) {
+    .presentation {
+        background: url('/assets/bg_main_rimac.png');
+        background-size: cover;
+        margin: 0;
+        &__content {
+            flex-direction: column-reverse;
+            align-items: center;
+            justify-content: flex-end;
+            padding-top: 20%;
+        }
+        &__text {
+            max-width: 320px;
+            width: 100%;
+            height: 100%;
+            padding: 2rem 0;
+            position: relative;
+            display: block;
+            &__title {
+                display: block;
+                margin-bottom: 1rem;
+            }
+        }
+        &__imagen {
+            max-width: 320px;
+            width: 100%;
+            & > img {
+                max-width: 320px;
+                position: inherit;
+                bottom: 0;
+            }
+        }
+    }
+}
+@media (min-width: 1024px) {
+    .presentation {
+        &__copyright {
+            display: block;
+            position: absolute;
+            bottom: 2rem;
+            left: -2rem;
+        }
+    }
+}

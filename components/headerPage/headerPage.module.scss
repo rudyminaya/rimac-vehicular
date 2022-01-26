@@ -2,11 +2,13 @@
 
 .header {
     background-color: transparent;
-    position: sticky;
     top: 0;
     z-index: 99999;
     max-height: 64px;
     height: 64px;
+    position: absolute;
+    width: 100%;
+
     &__content {
         max-width: 360px;
         margin: 0 auto;
@@ -33,9 +35,9 @@
     background-color: #fff;
     box-shadow: 0 -1px 1px 1px #676f8f;
 }
-
 @media (min-width: 1024px) {
     .header {
+        position: sticky;
         &__content {
             max-width: 85%;
         }
@@ -50,5 +52,8 @@
                 content: '(01) 411 6001';
             }
         }
+    }
+    .headernobg {
+        position: absolute;
     }
 }
