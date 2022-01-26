@@ -1,0 +1,54 @@
+@import '../../styles/variables';
+
+.header {
+    background-color: transparent;
+    position: sticky;
+    top: 0;
+    z-index: 99999;
+    max-height: 64px;
+    height: 64px;
+    &__content {
+        max-width: 360px;
+        margin: 0 auto;
+        height: 100%;
+        padding: 1rem 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    &__info {
+        color: $acianText;
+        display: flex;
+        align-items: center;
+        position: relative;
+        font-family: $roboto;
+        font-size: $md;
+        &::after {
+            content: 'Llámanos';
+            margin-left: 10px;
+        }
+    }
+}
+.headerbg {
+    background-color: #fff;
+    box-shadow: 0 -1px 1px 1px #676f8f;
+}
+
+@media (min-width: 1024px) {
+    .header {
+        &__content {
+            max-width: 85%;
+        }
+        &__info {
+            &::before {
+                content: '¿Tienes alguna duda?';
+                margin-right: 10px;
+                color: $grayText;
+                font-size: $sm;
+            }
+            &::after {
+                content: '(01) 411 6001';
+            }
+        }
+    }
+}
