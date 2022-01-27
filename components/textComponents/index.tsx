@@ -1,7 +1,7 @@
 import React from 'react'
 import Color from '../../styles/Color'
 import FontFamily from '../../styles/FontFamily'
-import FontSize from '../../styles/FontSize'
+import getFontSize, { FontSize } from '../../styles/FontSize'
 
 type Props = {
     texto: string
@@ -16,7 +16,7 @@ const TextComponents = (props: Props) => {
     return (
         <p
             style={{
-                fontSize: props.fontSize,
+                fontSize: getFontSize(props.fontSize || 'normal'),
                 color: props.color,
                 fontFamily: props.fontFamily,
                 lineHeight: '36px',

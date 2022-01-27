@@ -4,7 +4,6 @@ import { useForm, SubmitHandler, SubmitErrorHandler } from 'react-hook-form'
 import { useMediaQuery } from 'react-responsive'
 import TextComponents from '../textComponents'
 import FontFamily from '../../styles/FontFamily'
-import FontSize from '../../styles/FontSize'
 import Color from '../../styles/Color'
 import Boton, { TYPE_BUTTON } from '../boton'
 
@@ -40,7 +39,7 @@ const ValidateForm = (props: Props) => {
             <TextComponents
                 texto="Déjanos tus datos"
                 fontFamily={FontFamily.lato}
-                fontSize={DesktopScreen ? FontSize.xxl : FontSize.xl}
+                fontSize={DesktopScreen ? 'xxl' : 'xl'}
                 color={Color.grayTitle}
             />
             <div className={`${styles.form__field} ${styles.twoFields}`}>

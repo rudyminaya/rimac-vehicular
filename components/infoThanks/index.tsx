@@ -1,7 +1,6 @@
 import React from 'react'
 import Color from '../../styles/Color'
 import FontFamily from '../../styles/FontFamily'
-import FontSize from '../../styles/FontSize'
 import TextComponents from '../textComponents'
 import styles from './infoThanks.module.scss'
 import { useMediaQuery } from 'react-responsive'
@@ -19,13 +18,13 @@ const InfoThanks = (props: Props) => {
                     texto="¡Te damos la bienvenida!"
                     color={Color.redRimac}
                     fontFamily={FontFamily.lato}
-                    fontSize={DesktopScreen ? FontSize.big : FontSize.xxl}
+                    fontSize={DesktopScreen ? 'big' : 'xxl'}
                 />
                 <TextComponents
                     texto="Cuenta con nosotros para proteger tu vehículo"
                     color={Color.grayTitle}
                     fontFamily={FontFamily.lato}
-                    fontSize={DesktopScreen ? FontSize.big : FontSize.xxl}
+                    fontSize={DesktopScreen ? 'big' : 'xxl'}
                 />
             </div>
             <div className={styles.infoThanks__details}>
@@ -33,7 +32,7 @@ const InfoThanks = (props: Props) => {
                     texto="Enviaremos la confirmación de compra de tu Plan Vehícular Tracking a tu correo:"
                     color={Color.grayText}
                     fontFamily={FontFamily.roboto}
-                    fontSize={FontSize.md}
+                    fontSize={'md'}
                 />
 
                 <a href="mailto:joel.sanchez@gmail.com">
@@ -41,7 +40,7 @@ const InfoThanks = (props: Props) => {
                         texto="joel.sanchez@gmail.com"
                         color={Color.grayText}
                         fontFamily={FontFamily.roboto}
-                        fontSize={FontSize.md}
+                        fontSize={'md'}
                     />
                 </a>
             </div>
@@ -58,7 +57,7 @@ const InfoThanks = (props: Props) => {
                     texto="© 2021 RIMAC Seguros y Reaseguros."
                     color={Color.placeholder}
                     fontFamily={FontFamily.roboto}
-                    fontSize={FontSize.sm}
+                    fontSize={'sm'}
                 />
             </div>
         </div>

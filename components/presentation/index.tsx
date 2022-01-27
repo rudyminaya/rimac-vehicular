@@ -1,7 +1,6 @@
 import React from 'react'
 import Color from '../../styles/Color'
 import FontFamily from '../../styles/FontFamily'
-import FontSize from '../../styles/FontSize'
 import TextComponents from '../textComponents'
 import styles from './presentation.module.scss'
 
@@ -26,16 +25,14 @@ const Presentation = (props: Props) => {
                             texto="¡NUEVO!"
                             color={Color.grayTitle}
                             fontFamily={FontFamily.lato}
-                            fontSize={
-                                props.type == mobile ? FontSize.xs : FontSize.sm
-                            }
+                            fontSize={props.type == mobile ? 'xs' : 'sm'}
                         />
                     </strong>
                     <div className={styles.presentation__text__title}>
                         <TextComponents
                             texto="Seguro"
                             textoEnfasis="Vehicular Tracking"
-                            fontSize={FontSize.big}
+                            fontSize={'big'}
                             fontFamily={FontFamily.lato}
                             color={Color.grayTitle}
                             enfasisColor={Color.redRimac}
@@ -45,7 +42,7 @@ const Presentation = (props: Props) => {
                         texto="Cuentanos donde le haras seguimiento a tu seguro"
                         color={Color.grayText}
                         fontFamily={FontFamily.lato}
-                        fontSize={FontSize.normal}
+                        fontSize={'normal'}
                     />
                     {props.type == mobile ? (
                         ''
@@ -54,7 +51,7 @@ const Presentation = (props: Props) => {
                             <TextComponents
                                 texto="© 2021 RIMAC Seguros y Reaseguros."
                                 fontFamily={FontFamily.roboto}
-                                fontSize={FontSize.sm}
+                                fontSize={'sm'}
                                 color={Color.placeholder}
                             />
                         </div>

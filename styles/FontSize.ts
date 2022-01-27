@@ -1,11 +1,47 @@
-enum FontSize {
-    xs = 10,
-    sm = 12,
-    normal = 14,
-    md = 16,
-    lg = 18,
-    xl = 24,
-    xxl = 28,
-    big = 36,
+export type FontSize =
+    | 'xs'
+    | 'sm'
+    | 'normal'
+    | 'md'
+    | 'lg'
+    | 'large'
+    | 'xl'
+    | 'xxl'
+    | 'big'
+    | '3xl'
+
+const getFontSize = (size: FontSize): number => {
+    switch (size) {
+        case 'xs':
+            return 10
+
+        case 'sm':
+            return 12
+
+        case 'normal':
+            return 14
+
+        case 'md':
+            return 16
+
+        case 'lg':
+            return 18
+
+        case 'large':
+            return 20
+
+        case 'xl':
+            return 24
+
+        case 'xxl':
+            return 28
+
+        case 'big':
+            return 36
+
+        case '3xl':
+            return 40
+    }
 }
-export default FontSize
+
+export default getFontSize
