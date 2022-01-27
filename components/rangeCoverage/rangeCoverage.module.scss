@@ -1,0 +1,34 @@
+@import '../../styles/variables';
+
+.rangeCoverage {
+    padding: 1rem 2rem;
+    &__range {
+        margin-bottom: 1rem;
+        &__items {
+            display: flex;
+            align-items: center;
+            column-gap: 0.9rem;
+            color: $grayText;
+            font-size: $sm;
+            font-family: $lato;
+        }
+    }
+}
+@media (min-width: 1024px) {
+    .rangeCoverage {
+        padding: 1rem 0;
+        display: grid;
+        grid-template-columns: 7fr 5fr;
+
+        &__range {
+            margin-bottom: 0;
+            display: flex;
+            flex-direction: column;
+            &__items {
+                & > p {
+                    line-height: 4px !important;
+                }
+            }
+        }
+    }
+}

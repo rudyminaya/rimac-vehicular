@@ -2,8 +2,8 @@ import Head from 'next/head'
 import React from 'react'
 import Breadcrumb from '../components/breadcrumb'
 import DetailsCar from '../components/detailsCar'
-import PlanDetails from '../components/planDetails'
 import styles from '../styles/armaTuPlan.module.scss'
+import RangeCoverage from '../components/rangeCoverage'
 
 const Cotizacion = () => {
     return (
@@ -36,6 +36,7 @@ const Cotizacion = () => {
                         placa="C2U-114"
                         modeloAuto="Wolkswagen 2019 Golf"
                     />
+                    <RangeCoverage minRange={12500} maxRange={16500} />
                 </div>
                 <div></div>
             </main>
