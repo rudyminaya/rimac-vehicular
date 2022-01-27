@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import styles from './validateForm.module.scss'
-import { useForm, SubmitHandler } from 'react-hook-form'
+import { useForm, SubmitHandler, SubmitErrorHandler } from 'react-hook-form'
 import { useMediaQuery } from 'react-responsive'
-import TextComponents from '../../textComponents'
-import FontFamily from '../../../styles/FontFamily'
-import FontSize from '../../../styles/FontSize'
-import Color from '../../../styles/Color'
-import Boton, { TYPE_BUTTON } from '../../boton'
+import TextComponents from '../textComponents'
+import FontFamily from '../../styles/FontFamily'
+import FontSize from '../../styles/FontSize'
+import Color from '../../styles/Color'
+import Boton, { TYPE_BUTTON } from '../boton'
 
 type Inputs = {
     typeDocument: string
@@ -26,13 +26,17 @@ const ValidateForm = (props: Props) => {
     const {
         register,
         handleSubmit,
-        watch,
         formState: { errors },
     } = useForm<Inputs>()
-    const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data)
+    const onValid: SubmitHandler<Inputs> = (data) => console.log(data)
+    const onInvalid: SubmitErrorHandler<Inputs> = (errors) =>
+        console.log(errors)
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+        <form
+            onSubmit={handleSubmit(onValid, onInvalid)}
+            className={styles.form}
+        >
             <TextComponents
                 texto="Déjanos tus datos"
                 fontFamily={FontFamily.lato}
@@ -151,7 +155,7 @@ const ValidateForm = (props: Props) => {
                     los <a href="#">Términos y Condiciones.</a>
                 </label>
             </div>
-            <Boton textButton="Cotízalo" type={TYPE_BUTTON.submit} />+
+            <Boton textButton="Cotízalo" type={TYPE_BUTTON.submit} />
         </form>
     )
 }

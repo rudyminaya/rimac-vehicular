@@ -1,0 +1,123 @@
+@import '../../styles/variables';
+
+.breadcrumb {
+    &__bar {
+        display: flex;
+        align-items: center;
+        padding: 0.8rem 2rem;
+        justify-content: flex-start;
+
+        &__back {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+            border: 1px solid $graysoft;
+            min-width: 24px;
+            width: 24px;
+            height: 24px;
+            border-radius: 100%;
+            color: $graysoft;
+        }
+        &__steps {
+            color: $grayText;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            font-family: $lato;
+            font-size: $sm;
+            width: 100%;
+            max-width: 95px;
+            margin: 0 0.8rem;
+        }
+        &__level {
+            max-width: 300px;
+            width: 100%;
+            height: 8px;
+            border-radius: 25px;
+            border: 0.5px solid $acianText;
+            overflow: hidden;
+            position: relative;
+            & > div {
+                background-color: $acianText;
+                position: absolute;
+                top: 0;
+                width: 100%;
+                height: 8px;
+            }
+        }
+    }
+    &__box {
+        display: none;
+    }
+}
+@media (min-width: 1024px) {
+    .breadcrumb {
+        height: 100vh;
+        background: $graybg;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 3rem;
+        &__bar {
+            display: none;
+        }
+
+        &__box {
+            display: flex;
+            flex-direction: column;
+            row-gap: 40px;
+
+            &__item {
+                display: flex;
+                align-items: center;
+                color: $placeholder;
+                font-size: $normal;
+                font-family: $lato;
+                position: relative;
+
+                &::before {
+                    content: '';
+                    width: 3px;
+                    height: 50px;
+                    background-color: transparent;
+                    pointer-events: none;
+                    border-left: 2px dashed $borderopacity;
+                    position: absolute;
+                    left: 12px;
+                    bottom: -36px;
+                }
+
+                & > span {
+                    margin-right: 1rem;
+                    min-width: 24px;
+                    background: $graybg;
+                    width: 24px;
+                    height: 24px;
+                    border-radius: 100%;
+                    border: 1px solid $placeholder;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: $sm;
+                    position: relative;
+                    z-index: 2;
+                }
+            }
+            &__active {
+                color: $grayTitle;
+                pointer-events: none;
+
+                &::before {
+                    display: none;
+                }
+
+                & > span {
+                    color: #fff;
+                    background-color: $acianText;
+                    border-color: $acianText;
+                }
+            }
+        }
+    }
+}

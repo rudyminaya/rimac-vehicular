@@ -1,11 +1,9 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Presentation, {
-    TYPE_PRESENTATION,
-} from '../components/home/presentation'
+import Presentation, { TYPE_PRESENTATION } from '../components/presentation'
 import styles from '../styles/home.module.scss'
 import { useMediaQuery } from 'react-responsive'
-import ValidateForm from '../components/home/validateForm'
+import ValidateForm from '../components/validateForm'
 
 const Home: NextPage = () => {
     const DesktopScreen = useMediaQuery({ query: '(min-width:768px' })

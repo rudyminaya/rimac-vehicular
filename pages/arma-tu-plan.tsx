@@ -1,10 +1,10 @@
 import Head from 'next/head'
-import React from 'react'
-import HappyGuy from '../components/happyGuy'
-import InfoThanks from '../components/infoThanks'
-import styles from '../styles/gracias.module.scss'
 
-const Gracias = () => {
+import React from 'react'
+import Breadcrumb from '../components/breadcrumb'
+import styles from '../styles/armaTuPlan.module.scss'
+
+const Cotizacion = () => {
     return (
         <>
             <Head>
@@ -15,12 +15,13 @@ const Gracias = () => {
                 />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <main className={styles.gracias}>
-                <HappyGuy />
-                <InfoThanks />
+            <main className={styles.cotizacion}>
+                <Breadcrumb />
+                <div></div>
+                <div></div>
             </main>
         </>
     )
 }
 
-export default Gracias
+export default Cotizacion

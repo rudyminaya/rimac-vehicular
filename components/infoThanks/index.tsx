@@ -1,11 +1,11 @@
 import React from 'react'
-import Color from '../../../styles/Color'
-import FontFamily from '../../../styles/FontFamily'
-import FontSize from '../../../styles/FontSize'
-import TextComponents from '../../textComponents'
+import Color from '../../styles/Color'
+import FontFamily from '../../styles/FontFamily'
+import FontSize from '../../styles/FontSize'
+import TextComponents from '../textComponents'
 import styles from './infoThanks.module.scss'
 import { useMediaQuery } from 'react-responsive'
-import Boton, { TYPE_BUTTON } from '../../boton'
+import Boton, { TYPE_BUTTON } from '../boton'
 import Link from 'next/link'
 
 type Props = {}

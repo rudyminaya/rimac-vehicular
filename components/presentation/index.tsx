@@ -1,8 +1,8 @@
 import React from 'react'
-import Color from '../../../styles/Color'
-import FontFamily from '../../../styles/FontFamily'
-import FontSize from '../../../styles/FontSize'
-import TextComponents from '../../textComponents'
+import Color from '../../styles/Color'
+import FontFamily from '../../styles/FontFamily'
+import FontSize from '../../styles/FontSize'
+import TextComponents from '../textComponents'
 import styles from './presentation.module.scss'
 
 export enum TYPE_PRESENTATION {
