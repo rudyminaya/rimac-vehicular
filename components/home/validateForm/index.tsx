@@ -6,6 +6,7 @@ import TextComponents from '../../textComponents'
 import FontFamily from '../../../styles/FontFamily'
 import FontSize from '../../../styles/FontSize'
 import Color from '../../../styles/Color'
+import Boton, { TYPE_BUTTON } from '../../boton'
 
 type Inputs = {
     typeDocument: string
@@ -39,14 +40,15 @@ const ValidateForm = (props: Props) => {
                 color={Color.grayTitle}
             />
             <div className={`${styles.form__field} ${styles.twoFields}`}>
-                <select
-                    className={styles.form__field__select}
-                    {...register('typeDocument')}
-                    onChange={(e) => setDocumentType(e.target.value)}
-                >
-                    <option value="dni">DNI</option>
-                    <option value="ce">CE</option>
-                </select>
+                <div className={styles.form__field__select}>
+                    <select
+                        {...register('typeDocument')}
+                        onChange={(e) => setDocumentType(e.target.value)}
+                    >
+                        <option value="dni">DNI</option>
+                        <option value="ce">CE</option>
+                    </select>
+                </div>
                 <div className={styles.form__box}>
                     <input
                         className={styles.form__box__input}
@@ -149,9 +151,7 @@ const ValidateForm = (props: Props) => {
                     los <a href="#">Términos y Condiciones.</a>
                 </label>
             </div>
-            <button type="submit" className={styles.form__submitButton}>
-                Cotízalo
-            </button>
+            <Boton textButton="Cotízalo" type={TYPE_BUTTON.submit} />+
         </form>
     )
 }

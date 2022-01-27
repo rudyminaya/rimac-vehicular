@@ -19,7 +19,7 @@ const TextComponents = (props: Props) => {
                 fontSize: props.fontSize,
                 color: props.color,
                 fontFamily: props.fontFamily,
-                lineHeight: '1.5em',
+                lineHeight: '36px',
             }}
         >
             {props.texto}

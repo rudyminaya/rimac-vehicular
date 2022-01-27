@@ -1,0 +1,57 @@
+@import '../../../styles/variables';
+
+.happyGuy {
+    background: $graybg;
+    background-image: url('/assets/sofa_bg.png');
+    background-size: 360px;
+    background-repeat: no-repeat;
+    background-position-x: 100%;
+    background-position-y: 20%;
+    position: relative;
+    overflow: hidden;
+    min-height: 210px;
+    &__sofa {
+        display: none;
+    }
+
+    &__guy {
+        width: 100%;
+        max-width: 144px;
+        transform: rotatey(180deg);
+        height: auto;
+        position: absolute;
+        right: 4rem;
+        top: 1rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .happyGuy {
+        background: #fff;
+        min-height: calc(100vh - 4rem);
+        overflow: visible;
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+
+        &__sofa {
+            display: block;
+            height: 100%;
+            background-color: $graybg;
+            width: 100%;
+            max-width: 410px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-start;
+            padding-top: 10rem;
+        }
+        &__guy {
+            width: 100%;
+            max-width: 195px;
+            transform: rotatey(0);
+            height: auto;
+            position: absolute;
+            top: 10rem;
+            right: 2rem;
+        }
+    }
+}

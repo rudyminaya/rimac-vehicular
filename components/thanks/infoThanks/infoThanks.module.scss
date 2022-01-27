@@ -1,0 +1,66 @@
+@import '../../../styles/variables';
+
+.infoThanks {
+    padding: 3rem 1.8rem;
+    position: relative;
+
+    &__title {
+        margin-bottom: 1.5rem;
+    }
+    &__details {
+        margin-bottom: 2.5rem;
+
+        & > p,
+        & > a {
+            line-height: 28px !important;
+        }
+
+        & > p {
+            font-weight: 300;
+        }
+
+        & > a {
+            font-weight: 400;
+        }
+    }
+    &__boton {
+        margin-bottom: 4rem;
+    }
+    &__footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        padding-left: 2rem;
+        height: 75px;
+        width: 100%;
+        background-color: #fff;
+        display: flex;
+        align-items: center;
+        font-weight: 300 !important;
+        margin-top: 3rem;
+        border-top: 1px solid $grayBorder;
+    }
+}
+@media (min-width: 1024px) {
+    .infoThanks {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-bottom: 10rem;
+        max-width: 480px;
+
+        &__title {
+            & > p {
+                line-height: 48px !important;
+            }
+        }
+        &__footer {
+            display: none;
+        }
+    }
+}
+@media (min-width: 1512px) {
+    .infoThanks {
+        margin-left: 10rem;
+    }
+}
