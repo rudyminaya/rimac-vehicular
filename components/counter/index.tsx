@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { formatoMiles } from '../../utils/numberFormater'
 import styles from './counter.module.scss'
 
 type Props = {
@@ -19,7 +20,9 @@ const Counter = (props: Props) => {
             >
                 -
             </button>
-            <p className={styles.counter__count}>{`$ ${props.currentCount}`}</p>
+            <p className={styles.counter__count}>{`$ ${formatoMiles(
+                props.currentCount
+            )}`}</p>
             <button
                 className={styles.counter__indicator}
                 onClick={props.onPlus}

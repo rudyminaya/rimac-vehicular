@@ -5,6 +5,7 @@ import Boton, { TYPE_BUTTON } from '../boton'
 import TextComponents from '../textComponents'
 import styles from './subtotal.module.scss'
 import { useMediaQuery } from 'react-responsive'
+import { formatoDecimales } from '../../utils/numberFormater'
 
 type Props = {
     base: number
@@ -28,7 +29,7 @@ const Subtotal = (props: Props) => {
                         />
                     </strong>
                     <TextComponents
-                        texto={`$${base}`}
+                        texto={`$${formatoDecimales(base)}`}
                         color={Color.grayText}
                         fontFamily={FontFamily.lato}
                         fontSize={DesktopScreen ? 'xxl' : 'xl'}

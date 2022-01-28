@@ -50,7 +50,7 @@ const DetailsCar = (props: Props) => {
             <div className={styles.detailsCar__card}>
                 <div className={styles.detailsCar__card__text}>
                     <TextComponents
-                        texto={`Placa: ${props.placa}`}
+                        texto={`Placa: ${props.placa.toUpperCase()}`}
                         color={Color.placeholder}
                         fontSize={'normal'}
                         fontFamily={FontFamily.roboto}
