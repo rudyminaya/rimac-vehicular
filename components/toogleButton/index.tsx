@@ -25,7 +25,6 @@ const ToogleButton = (props: Props) => {
                         : styles.toogleButton__circle
                 }
             ></i>
-            {console.log(state)}
         </button>
     )
 }

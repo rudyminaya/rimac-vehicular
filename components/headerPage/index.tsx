@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import styles from './headerPage.module.scss'
 import { FaPhoneAlt } from 'react-icons/fa'
-import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { Store } from '../../context/Store'
+import { limpiarDatos } from '../../utils/actionGenerator'
 
 export enum TYPE_HEADER {
     nobg,
@@ -13,6 +15,20 @@ interface Props {
 }
 
 const HeaderPage = (props: Props) => {
+    const { state, dispatch } = useContext(Store)
+    const router = useRouter()
+
+    useEffect(() => {
+        if (!state.cliente || !state.vehiculo) {
+            router.push('/')
+        }
+    }, [state.cliente, state.vehiculo])
+
+    const wipeData = () => {
+        const limpiar = limpiarDatos()
+        dispatch(limpiar)
+    }
+
     return (
         <nav
             className={
@@ -22,13 +38,13 @@ const HeaderPage = (props: Props) => {
             }
         >
             <div className={styles.header__content}>
-                <Link href="/" passHref>
+                <a onClick={wipeData}>
                     <img
                         className={styles.header__imagen}
                         src="/assets/logo_rimac.svg"
                         alt="Logo de Rimac"
                     />
-                </Link>
+                </a>
                 <a className={styles.header__info} href="tel:+5114116001">
                     <FaPhoneAlt />
                 </a>

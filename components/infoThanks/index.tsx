@@ -13,7 +13,6 @@ type Props = {
 }
 
 const InfoThanks = (props: Props) => {
-    console.log(props.email)
     const DesktopScreen = useMediaQuery({ query: '(min-width:768px' })
     return (
         <div className={styles.infoThanks}>

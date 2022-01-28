@@ -29,7 +29,6 @@ const TabsCoverage = (props: Props) => {
     }
 
     useEffect(() => {
-        console.log(state.vehiculo?.valorAsegurado)
         if (state.vehiculo?.valorAsegurado) {
             const coberturasValidas = Controller.coberturasValidas(
                 state.vehiculo.valorAsegurado,
