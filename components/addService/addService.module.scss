@@ -1,0 +1,29 @@
+@import '../../styles/variables';
+
+.addService {
+    margin-top: 0.8rem;
+    border: none;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    column-gap: 0.8rem;
+    cursor: pointer;
+    font-size: $md;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: $acianText;
+    font-family: $lato;
+
+    &__icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-width: 24px;
+        width: 24px;
+        height: 24px;
+        border: 1px solid $acianText;
+        color: $acianText;
+        font-size: $md;
+        border-radius: 100%;
+    }
+}

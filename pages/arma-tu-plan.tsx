@@ -4,6 +4,7 @@ import Breadcrumb from '../components/breadcrumb'
 import DetailsCar from '../components/detailsCar'
 import styles from '../styles/armaTuPlan.module.scss'
 import RangeCoverage from '../components/rangeCoverage'
+import Coverage from '../components/coverage'
 
 const Cotizacion = () => {
     return (
@@ -37,6 +38,7 @@ const Cotizacion = () => {
                         modeloAuto="Wolkswagen 2019 Golf"
                     />
                     <RangeCoverage minRange={12500} maxRange={16500} />
+                    <Coverage />
                 </div>
                 <div></div>
             </main>

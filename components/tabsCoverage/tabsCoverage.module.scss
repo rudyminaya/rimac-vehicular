@@ -1,0 +1,25 @@
+@import '../../styles/variables';
+
+.tabsCoverage {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 2rem;
+
+    &__tab {
+        text-align: center;
+        padding: 0.5rem;
+        font-family: $lato;
+        font-size: $sm;
+        text-transform: uppercase;
+        transition: color ease-in-out 150ms;
+        cursor: pointer;
+    }
+    &__selected {
+        color: $redRimac;
+        border-bottom: 2px solid $redRimac;
+    }
+
+    &__item {
+        margin-top: 2rem;
+    }
+}
