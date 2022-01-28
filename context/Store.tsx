@@ -10,6 +10,7 @@ const initialState: IState = {
     cliente: undefined,
     vehiculo: undefined,
     coberturas: protegeTuAuto,
+    primaElegida: 20,
 }
 
 interface IContext {
@@ -31,19 +32,7 @@ function reducer(state: IState, action: IAction): IState {
                 cliente: payload,
             }
         }
-        case ActionType.guardarDatosDeAPI: {
-            const payload = action.payload as Cliente
-            if (!state.cliente) {
-                return state
-            }
-            return {
-                ...state,
-                cliente: {
-                    ...state.cliente,
-                    nombre: payload.nombre,
-                },
-            }
-        }
+
         case ActionType.seleccionarCobertura: {
             const payloadSelected = action.payload as Cobertura
             const id = payloadSelected.id
@@ -116,6 +105,15 @@ function reducer(state: IState, action: IAction): IState {
                 },
             }
         }
+
+        case ActionType.guardarPrima: {
+            const montoPrima = action.payload as number
+            return {
+                ...state,
+                primaElegida: montoPrima,
+            }
+        }
+
         case ActionType.limpiarDatos: {
             return initialState
         }

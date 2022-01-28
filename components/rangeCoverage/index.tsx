@@ -8,6 +8,9 @@ import styles from './rangeCoverage.module.scss'
 type Props = {
     minRange: number
     maxRange: number
+    currentCount: number
+    onMinus: () => void
+    onPlus: () => void
 }
 
 const RangeCoverage = (props: Props) => {
@@ -25,7 +28,13 @@ const RangeCoverage = (props: Props) => {
                     <TextComponents texto={`MAX $${props.maxRange}`} />
                 </div>
             </div>
-            <Counter minCount={props.minRange} maxCount={props.maxRange} />
+            <Counter
+                minCount={props.minRange}
+                maxCount={props.maxRange}
+                currentCount={props.currentCount}
+                onMinus={props.onMinus}
+                onPlus={props.onPlus}
+            />
         </div>
     )
 }

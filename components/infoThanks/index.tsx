@@ -5,11 +5,15 @@ import TextComponents from '../textComponents'
 import styles from './infoThanks.module.scss'
 import { useMediaQuery } from 'react-responsive'
 import Boton, { TYPE_BUTTON } from '../boton'
-import Link from 'next/link'
 
-type Props = {}
+type Props = {
+    valorPrima: number
+    email: string
+    onClick: () => void
+}
 
 const InfoThanks = (props: Props) => {
+    console.log(props.email)
     const DesktopScreen = useMediaQuery({ query: '(min-width:768px' })
     return (
         <div className={styles.infoThanks}>
@@ -29,15 +33,15 @@ const InfoThanks = (props: Props) => {
             </div>
             <div className={styles.infoThanks__details}>
                 <TextComponents
-                    texto="Enviaremos la confirmación de compra de tu Plan Vehícular Tracking a tu correo:"
+                    texto={`Enviaremos la confirmación de compra de tu Plan Vehícular Tracking por un valor de $${props.valorPrima} a tu correo:`}
                     color={Color.grayText}
                     fontFamily={FontFamily.roboto}
                     fontSize={'md'}
                 />
 
-                <a href="mailto:joel.sanchez@gmail.com">
+                <a href={`mailto:${props.email}`}>
                     <TextComponents
-                        texto="joel.sanchez@gmail.com"
+                        texto={props.email}
                         color={Color.grayText}
                         fontFamily={FontFamily.roboto}
                         fontSize={'md'}
@@ -45,12 +49,11 @@ const InfoThanks = (props: Props) => {
                 </a>
             </div>
             <div className={styles.infoThanks__boton}>
-                <Link href="/" passHref>
-                    <Boton
-                        textButton="Cómo usar mi seguro"
-                        type={TYPE_BUTTON.button}
-                    />
-                </Link>
+                <Boton
+                    onClick={props.onClick}
+                    textButton="Cómo usar mi seguro"
+                    type={TYPE_BUTTON.button}
+                />
             </div>
             <div className={styles.infoThanks__footer}>
                 <TextComponents

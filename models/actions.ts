@@ -5,13 +5,13 @@ interface IAction {
 
 export enum ActionType {
     guardarDatosIniciales,
-    guardarDatosDeAPI,
     seleccionarCobertura,
     deseleccionarCobertura,
     actualizarCoberturasValidas,
     aumentarSumaAsegurada,
     reducirSumaAsegurada,
     guardarDatosVehiculo,
+    guardarPrima,
     limpiarDatos,
 }
 

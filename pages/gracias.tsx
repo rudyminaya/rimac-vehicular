@@ -1,10 +1,32 @@
 import Head from 'next/head'
-import React from 'react'
+import { useRouter } from 'next/router'
+import React, { useContext, useEffect } from 'react'
 import HappyGuy from '../components/happyGuy'
 import InfoThanks from '../components/infoThanks'
+import { Store } from '../context/Store'
 import styles from '../styles/gracias.module.scss'
+import { limpiarDatos } from '../utils/actionGenerator'
 
 const Gracias = () => {
+    const { state, dispatch } = useContext(Store)
+
+    const router = useRouter()
+
+    useEffect(() => {
+        if (!state.cliente || !state.vehiculo) {
+            router.push('/')
+        }
+    }, [state.cliente, state.vehiculo])
+
+    const wipeData = () => {
+        const limpiar = limpiarDatos()
+        dispatch(limpiar)
+    }
+
+    if (!state.cliente) {
+        return <></>
+    }
+
     return (
         <>
             <Head>
@@ -17,7 +39,11 @@ const Gracias = () => {
             </Head>
             <main className={styles.gracias}>
                 <HappyGuy />
-                <InfoThanks />
+                <InfoThanks
+                    email={state.cliente.email}
+                    valorPrima={state.primaElegida}
+                    onClick={wipeData}
+                />
             </main>
         </>
     )

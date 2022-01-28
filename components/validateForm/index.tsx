@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import styles from './validateForm.module.scss'
 import { useForm, SubmitHandler, SubmitErrorHandler } from 'react-hook-form'
 import { useMediaQuery } from 'react-responsive'
@@ -7,7 +7,13 @@ import FontFamily from '../../styles/FontFamily'
 import Color from '../../styles/Color'
 import Boton, { TYPE_BUTTON } from '../boton'
 import { Store } from '../../context/Store'
-import { datosIniciales } from '../../utils/actionGenerator'
+import {
+    datosIniciales,
+    guardarDatosVehiculo,
+} from '../../utils/actionGenerator'
+import { getUserInfo } from '../../controllers/user'
+import { getVehiculo } from '../../controllers/vehiculo'
+import { useRouter } from 'next/router'
 
 type Inputs = {
     typeDocument: string
@@ -20,21 +26,42 @@ type Inputs = {
 const ValidateForm = () => {
     const DesktopScreen = useMediaQuery({ query: '(min-width:768px' })
     const { state, dispatch } = useContext(Store)
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm<Inputs>()
+    const { register, handleSubmit } = useForm<Inputs>()
 
-    const onValid: SubmitHandler<Inputs> = (data) => {
+    const router = useRouter()
+
+    const onValid: SubmitHandler<Inputs> = async (data) => {
+        const userInfo = await getUserInfo()
         const action = datosIniciales(
             data.typeDocument,
             data.docNum,
             data.telf,
-            data.placa
+            data.placa,
+            userInfo.name,
+            userInfo.email
         )
         dispatch(action)
     }
+
+    useEffect(() => {
+        const obtenerData = async () => {
+            const vehiculo = await getVehiculo()
+            const action = guardarDatosVehiculo(
+                vehiculo.valorAsegurado,
+                vehiculo.valorMinAsegurado,
+                vehiculo.valorMaxAsegurado,
+                vehiculo.marca,
+                vehiculo.modelo,
+                vehiculo.anio
+            )
+
+            dispatch(action)
+            router.push('/arma-tu-plan')
+        }
+        if (state.cliente) {
+            obtenerData()
+        }
+    }, [state.cliente])
 
     const onInvalid: SubmitErrorHandler<Inputs> = (errors) =>
         console.log(errors)

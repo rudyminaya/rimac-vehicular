@@ -6,6 +6,7 @@ type IState = {
     coberturas: Cobertura[]
     cliente?: Cliente
     vehiculo?: Vehiculo
+    primaElegida: number
 }
 
 export default IState

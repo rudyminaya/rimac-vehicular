@@ -4,34 +4,26 @@ import styles from './counter.module.scss'
 type Props = {
     minCount: number
     maxCount: number
+    currentCount: number
+    onPlus: () => void
+    onMinus: () => void
 }
 
 const Counter = (props: Props) => {
-    const [count, setCount] = useState<number>(props.minCount)
-
-    const aumentar = () => {
-        setCount(count + 100)
-        //console.log('aumentando ' + count)
-    }
-    const disminuir = () => {
-        setCount(count - 100)
-        //console.log('disminuyendo ' + count)
-    }
-
     return (
         <div className={styles.counter}>
             <button
                 className={styles.counter__indicator}
-                onClick={disminuir}
-                disabled={count === props.minCount ? true : false}
+                onClick={props.onMinus}
+                disabled={props.currentCount === props.minCount ? true : false}
             >
                 -
             </button>
-            <p className={styles.counter__count}>{`$ ${count}`}</p>
+            <p className={styles.counter__count}>{`$ ${props.currentCount}`}</p>
             <button
                 className={styles.counter__indicator}
-                onClick={aumentar}
-                disabled={count === props.maxCount ? true : false}
+                onClick={props.onPlus}
+                disabled={props.currentCount === props.maxCount ? true : false}
             >
                 +
             </button>

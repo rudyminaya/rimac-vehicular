@@ -2,7 +2,7 @@ import Cobertura from '../models/cobertura'
 import Vehiculo from '../models/vehiculo'
 
 export const getVehiculo = async (): Promise<Vehiculo> => {
-    const valorAsegurado = Math.round(Math.random() * 40000) + 10000
+    const valorAsegurado = (Math.round(Math.random() * 100) + 100) * 100
 
     return new Promise((res) => {
         res({
@@ -16,4 +16,14 @@ export const getVehiculo = async (): Promise<Vehiculo> => {
     })
 }
 
-export const getPrima = (valorAsegurado: number, coberturas: Cobertura[]) => {}
+export const getPrima = (
+    valorAsegurado: number,
+    coberturas: Cobertura[]
+): number => {
+    const valorDeCoberturas = coberturas
+        .filter((i) => i.selected)
+        .map((e) => e.price)
+        .reduce((v, n) => v + n, 0)
+
+    return 20 + valorDeCoberturas
+}

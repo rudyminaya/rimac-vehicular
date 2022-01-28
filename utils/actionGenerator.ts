@@ -7,7 +7,9 @@ export const datosIniciales = (
     tipoDoc: string,
     nroDoc: number,
     nroCel: number,
-    placa: string
+    placa: string,
+    nombre: string,
+    email: string
 ): IAction => {
     return {
         type: ActionType.guardarDatosIniciales,
@@ -16,26 +18,8 @@ export const datosIniciales = (
             nroDoc,
             nroCel,
             placa,
-            nombre: '',
-        },
-    }
-}
-
-export const datosAPI = (
-    tipoDoc: string,
-    nroDoc: number,
-    nroCel: number,
-    placa: string,
-    nombre: string
-): IAction => {
-    return {
-        type: ActionType.guardarDatosDeAPI,
-        payload: {
-            tipoDoc,
-            nroDoc,
-            nroCel,
-            placa,
             nombre,
+            email,
         },
     }
 }
@@ -97,5 +81,19 @@ export const guardarDatosVehiculo = (
     return {
         type: ActionType.guardarDatosVehiculo,
         payload: vehiculo,
+    }
+}
+
+export const guardarPrima = (prima: number) => {
+    return {
+        type: ActionType.guardarPrima,
+        payload: prima,
+    }
+}
+
+export const limpiarDatos = () => {
+    return {
+        type: ActionType.limpiarDatos,
+        payload: undefined,
     }
 }
