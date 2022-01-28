@@ -2,23 +2,17 @@ import React, { useState } from 'react'
 import styles from './addService.module.scss'
 
 type Props = {
-    onClick: () => any
+    added: boolean
+    onClick: (e: any) => void
 }
 
 const AddService = (props: Props) => {
-    const [addService, setAddService] = useState<boolean>(false)
     return (
-        <button
-            onClick={() => {
-                props.onClick
-                setAddService(!addService)
-            }}
-            className={styles.addService}
-        >
+        <button onClick={props.onClick} className={styles.addService}>
             <span className={styles.addService__icon}>
-                {addService ? '-' : '+'}
+                {props.added ? '-' : '+'}
             </span>
-            {addService ? 'Quitar' : 'Agregar'}
+            {props.added ? 'Quitar' : 'Agregar'}
         </button>
     )
 }

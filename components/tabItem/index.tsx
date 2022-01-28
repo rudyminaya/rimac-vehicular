@@ -3,42 +3,61 @@ import AddService from '../addService'
 import styles from './tabItem.module.scss'
 import { useMediaQuery } from 'react-responsive'
 import ToogleButton from '../toogleButton'
+import Cobertura from '../../models/cobertura'
 
 type Props = {
-    imagen: string
-    name: string
-    description: string
-    onClick?: () => any
+    cobertura: Cobertura
+    agregarCobertura: () => void
+    quitarCobertura: () => void
 }
 
-const TabItem = (props: Props) => {
+const TabItem = ({
+    cobertura: { imagen, name, description, selected },
+    agregarCobertura,
+    quitarCobertura,
+}: Props) => {
     const [show, setShow] = useState<boolean>(false)
     const DesktopScreen = useMediaQuery({ query: '(min-width:768px' })
+
+    const modificarCobertura = (e: any) => {
+        e.preventDefault()
+        if (selected) {
+            quitarCobertura()
+        } else {
+            agregarCobertura()
+        }
+    }
 
     return (
         <div className={styles.tabItem}>
             <div className={styles.tabItem__content}>
                 <img
-                    src={`/assets/${props.imagen}`}
+                    src={`/assets/${imagen}`}
                     className={styles.tabItem__content__icono}
-                    alt={`imagen de ${props.name}`}
+                    alt={`imagen de ${name}`}
                 />
                 <div className={styles.tabItem__content__header}>
                     {DesktopScreen ? (
                         <div aria-hidden={show} onClick={() => setShow(!show)}>
-                            {props.name}
+                            {name}
                         </div>
                     ) : (
                         <div aria-hidden={show}>
-                            {props.name}
+                            {name}
                             <p onClick={() => setShow(!show)}>Ver más</p>
                         </div>
                     )}
 
                     {DesktopScreen ? (
-                        <AddService onClick={() => props.onClick} />
+                        <AddService
+                            onClick={modificarCobertura}
+                            added={selected}
+                        />
                     ) : (
-                        <ToogleButton onClick={() => props.onClick} />
+                        <ToogleButton
+                            onClick={modificarCobertura}
+                            added={selected}
+                        />
                     )}
                 </div>
             </div>
@@ -46,7 +65,7 @@ const TabItem = (props: Props) => {
                 className={styles.tabItem__description}
                 style={{ maxHeight: `${show ? '450px' : 0}` }}
             >
-                {props.description}
+                {description}
             </div>
         </div>
     )

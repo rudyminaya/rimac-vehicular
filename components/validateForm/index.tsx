@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import styles from './validateForm.module.scss'
 import { useForm, SubmitHandler, SubmitErrorHandler } from 'react-hook-form'
 import { useMediaQuery } from 'react-responsive'
@@ -6,6 +6,8 @@ import TextComponents from '../textComponents'
 import FontFamily from '../../styles/FontFamily'
 import Color from '../../styles/Color'
 import Boton, { TYPE_BUTTON } from '../boton'
+import { Store } from '../../context/Store'
+import { datosIniciales } from '../../utils/actionGenerator'
 
 type Inputs = {
     typeDocument: string
@@ -15,19 +17,25 @@ type Inputs = {
     terms: boolean
 }
 
-type Props = {}
-
-const ValidateForm = (props: Props) => {
+const ValidateForm = () => {
     const DesktopScreen = useMediaQuery({ query: '(min-width:768px' })
-
-    const [documentType, setDocumentType] = useState<string>('DNI')
-
+    const { state, dispatch } = useContext(Store)
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm<Inputs>()
-    const onValid: SubmitHandler<Inputs> = (data) => console.log(data)
+
+    const onValid: SubmitHandler<Inputs> = (data) => {
+        const action = datosIniciales(
+            data.typeDocument,
+            data.docNum,
+            data.telf,
+            data.placa
+        )
+        dispatch(action)
+    }
+
     const onInvalid: SubmitErrorHandler<Inputs> = (errors) =>
         console.log(errors)
 
@@ -44,10 +52,7 @@ const ValidateForm = (props: Props) => {
             />
             <div className={`${styles.form__field} ${styles.twoFields}`}>
                 <div className={styles.form__field__select}>
-                    <select
-                        {...register('typeDocument')}
-                        onChange={(e) => setDocumentType(e.target.value)}
-                    >
+                    <select {...register('typeDocument')}>
                         <option value="dni">DNI</option>
                         <option value="ce">CE</option>
                     </select>

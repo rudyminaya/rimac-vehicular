@@ -3,7 +3,8 @@ import Color from '../../styles/Color'
 import styles from './toogleButton.module.scss'
 
 type Props = {
-    onClick: () => any
+    added: boolean
+    onClick: (e: any) => void
 }
 
 const ToogleButton = (props: Props) => {
@@ -24,6 +25,7 @@ const ToogleButton = (props: Props) => {
                         : styles.toogleButton__circle
                 }
             ></i>
+            {console.log(state)}
         </button>
     )
 }

@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
-import { protegeTuAuto } from '../../data/protegeTuAuto'
+import React, { useContext, useState } from 'react'
+import { Store } from '../../context/Store'
+import Cobertura from '../../models/cobertura'
 import TabItem from '../tabItem'
 import styles from './tabsCoverage.module.scss'
+import * as Generator from '../../utils/actionGenerator'
 
 export type TabObject = {
     name: string
@@ -14,6 +16,16 @@ type Props = {
 
 const TabsCoverage = (props: Props) => {
     const [selected, setSelected] = useState<number>(0)
+
+    const { state, dispatch } = useContext(Store)
+
+    const agregarCobertura = (cobertura: Cobertura) => {
+        dispatch(Generator.seleccionarCobertura(cobertura))
+    }
+
+    const quitarCobertura = (cobertura: Cobertura) => {
+        dispatch(Generator.deseleccionarCobertura(cobertura))
+    }
 
     return (
         <>
@@ -38,13 +50,13 @@ const TabsCoverage = (props: Props) => {
             </div>
             <div className={styles.tabsCoverage__item}>
                 {selected === 0 ? (
-                    protegeTuAuto.map((e, i) => {
+                    state.coberturas.map((e, i) => {
                         return (
                             <TabItem
                                 key={`item-cobertura-${i}`}
-                                imagen={e.imagen}
-                                name={e.name}
-                                description={e.description}
+                                cobertura={e}
+                                agregarCobertura={() => agregarCobertura(e)}
+                                quitarCobertura={() => quitarCobertura(e)}
                             />
                         )
                     })
