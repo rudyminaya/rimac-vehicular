@@ -47,6 +47,16 @@
             }
         }
     }
+    &__errors {
+        padding: 0.8rem 0.8rem 0 0.8rem;
+
+        &__message {
+            font-family: $lato;
+            font-size: $sm;
+            color: $redRimac;
+            line-height: 1.5;
+        }
+    }
     & .twoFields {
         display: flex;
         margin-top: 1.5rem;

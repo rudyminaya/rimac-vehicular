@@ -1,6 +1,11 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import styles from './validateForm.module.scss'
-import { useForm, SubmitHandler, SubmitErrorHandler } from 'react-hook-form'
+import {
+    useForm,
+    SubmitHandler,
+    SubmitErrorHandler,
+    FieldErrors,
+} from 'react-hook-form'
 import { useMediaQuery } from 'react-responsive'
 import TextComponents from '../textComponents'
 import FontFamily from '../../styles/FontFamily'
@@ -24,6 +29,7 @@ type Inputs = {
 }
 
 const ValidateForm = () => {
+    const [errores, setErrores] = useState<string[]>([])
     const DesktopScreen = useMediaQuery({ query: '(min-width:768px' })
     const { state, dispatch } = useContext(Store)
     const { register, handleSubmit } = useForm<Inputs>()
@@ -63,8 +69,13 @@ const ValidateForm = () => {
         }
     }, [state.cliente])
 
-    const onInvalid: SubmitErrorHandler<Inputs> = (errors) =>
-        console.log(errors)
+    const onInvalid: SubmitErrorHandler<Inputs> = (errors) => {
+        setErrores(
+            Object.values(errors)
+                .map((e) => e.message || '')
+                .filter((v) => v != '')
+        )
+    }
 
     return (
         <form
@@ -77,6 +88,20 @@ const ValidateForm = () => {
                 fontSize={DesktopScreen ? 'xxl' : 'xl'}
                 color={Color.grayTitle}
             />
+            {errores && (
+                <ul className={styles.form__errors}>
+                    {errores.map((e: string, i) => {
+                        return (
+                            <li
+                                key={`error-${i}`}
+                                className={styles.form__errors__message}
+                            >
+                                {e}
+                            </li>
+                        )
+                    })}
+                </ul>
+            )}
             <div className={`${styles.form__field} ${styles.twoFields}`}>
                 <div className={styles.form__field__select}>
                     <select {...register('typeDocument')}>
@@ -146,7 +171,8 @@ const ValidateForm = () => {
                     <input
                         className={styles.form__box__input}
                         type="text"
-                        maxLength={7}
+                        minLength={6}
+                        maxLength={6}
                         placeholder=" "
                         {...register('placa', {
                             required: {
@@ -155,13 +181,18 @@ const ValidateForm = () => {
                                     'Es obligatorio que ingrese la placa de rodaje de su vehículo',
                             },
                             maxLength: {
-                                value: 7,
+                                value: 6,
                                 message:
-                                    'El número de celular no debe exceder a más de 7 dígitos',
+                                    'El número de placa no debe exceder a más de 6 dígitos',
+                            },
+                            minLength: {
+                                value: 6,
+                                message:
+                                    'El número de placa debe ser de 6 dígitos',
                             },
                             pattern: {
                                 value: /[a-zA-Z0-9]/,
-                                message: 'El número de celulares incorrecto',
+                                message: 'El número de placa es incorrecto',
                             },
                         })}
                     />
@@ -175,7 +206,12 @@ const ValidateForm = () => {
                     type="checkbox"
                     id="terms"
                     className={styles.form__terms__checkbox}
-                    {...register('terms')}
+                    {...register('terms', {
+                        required: {
+                            value: true,
+                            message: 'Debe aceptar los Términos y Condiciones',
+                        },
+                    })}
                 />
                 <label
                     htmlFor="terms"
