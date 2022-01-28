@@ -1,0 +1,29 @@
+.toogleButton {
+    background-color: transparent;
+    width: 51px;
+    height: 32px;
+    border: none;
+    border-radius: 18px;
+    position: relative;
+    z-index: 0;
+    display: flex;
+    align-items: center;
+    transition: 150ms;
+
+    &__circle {
+        width: 28px;
+        height: 28px;
+        background-color: white;
+        box-shadow: 0px 2px 2px rgba(163, 171, 204, 0.3),
+            0px 2px 1px rgba(163, 171, 204, 0.06);
+        position: absolute;
+        border-radius: 100%;
+        right: 2px;
+        transition: all linear 150ms;
+    }
+    &__active {
+        box-shadow: 0px 2px 2px rgba(97, 173, 116, 0.6),
+            0px 2px 1px rgba(84, 121, 94, 0.06);
+        right: calc(100% - 30px);
+    }
+}

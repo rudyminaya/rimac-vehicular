@@ -17,49 +17,51 @@ const Subtotal = (props: Props) => {
     const base: number = props.base
     return (
         <div className={styles.subtotal}>
-            <div className={styles.subtotal__summary}>
-                <strong>
+            <div className={styles.subtotal__content}>
+                <div className={styles.subtotal__summary}>
+                    <strong>
+                        <TextComponents
+                            texto="MONTO"
+                            fontFamily={FontFamily.lato}
+                            fontSize="sm"
+                            color={Color.grayText}
+                        />
+                    </strong>
                     <TextComponents
-                        texto="MONTO"
-                        fontFamily={FontFamily.lato}
-                        fontSize="sm"
+                        texto={`$${base}`}
                         color={Color.grayText}
-                    />
-                </strong>
-                <TextComponents
-                    texto={`$${base}`}
-                    color={Color.grayText}
-                    fontFamily={FontFamily.lato}
-                    fontSize={DesktopScreen ? 'xxl' : 'xl'}
-                />
-                <strong>
-                    <TextComponents
-                        texto="MENSUAL"
                         fontFamily={FontFamily.lato}
-                        fontSize={DesktopScreen ? 'sm' : 'xs'}
-                        color={Color.grayText}
+                        fontSize={DesktopScreen ? 'xxl' : 'xl'}
                     />
-                </strong>
-            </div>
-            <ul className={styles.subtotal__details}>
-                El precio Incluye:
-                {props.benefits.map((e, i) => {
-                    return (
-                        <li
-                            key={`beneficio-${i}`}
-                            className={styles.subtotal__details__item}
-                        >
-                            {e}
-                        </li>
-                    )
-                })}
-            </ul>
-            <div className={styles.subtotal__conversion}>
-                <Boton
-                    textButton="Lo quiero"
-                    type={TYPE_BUTTON.button}
-                    onClick={props.onClick}
-                />
+                    <strong>
+                        <TextComponents
+                            texto="MENSUAL"
+                            fontFamily={FontFamily.lato}
+                            fontSize={DesktopScreen ? 'sm' : 'xs'}
+                            color={Color.grayText}
+                        />
+                    </strong>
+                </div>
+                <ul className={styles.subtotal__details}>
+                    El precio Incluye:
+                    {props.benefits.map((e, i) => {
+                        return (
+                            <li
+                                key={`beneficio-${i}`}
+                                className={styles.subtotal__details__item}
+                            >
+                                {e}
+                            </li>
+                        )
+                    })}
+                </ul>
+                <div className={styles.subtotal__conversion}>
+                    <Boton
+                        textButton="Lo quiero"
+                        type={TYPE_BUTTON.button}
+                        onClick={props.onClick}
+                    />
+                </div>
             </div>
         </div>
     )

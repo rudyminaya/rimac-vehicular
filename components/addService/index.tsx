@@ -1,13 +1,11 @@
 import React, { useState } from 'react'
 import styles from './addService.module.scss'
-import { useMediaQuery } from 'react-responsive'
 
 type Props = {
     onClick: () => any
 }
 
 const AddService = (props: Props) => {
-    const DesktopScreen = useMediaQuery({ query: '(min-width:768px' })
     const [addService, setAddService] = useState<boolean>(false)
     return (
         <button

@@ -15,6 +15,42 @@
 
         &__header {
             width: 100%;
+            display: flex;
+            justify-content: space-between;
+
+            & > div {
+                & > p {
+                    margin-top: 1rem;
+                    color: $acianText;
+                    font-family: $lato;
+                    font-size: $sm;
+                    font-weight: 700;
+                    text-transform: uppercase;
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    width: fit-content;
+                    cursor: pointer;
+
+                    &::after {
+                        content: '';
+                        width: 6px;
+                        min-width: 6px;
+                        height: 6px;
+                        border-top: 2px solid $acianText;
+                        border-right: 2px solid $acianText;
+                        background-color: transparent;
+                        position: absolute;
+                        right: -1rem;
+                        transform: rotate(135deg);
+                        bottom: 5px;
+                    }
+                }
+                &[aria-hidden='true'] > p::after {
+                    transform: rotate(-45deg);
+                    bottom: 2px;
+                }
+            }
         }
     }
     &__description {
@@ -31,9 +67,11 @@
     .tabItem {
         &__content {
             &__header {
-                & > p {
+                display: block;
+                & > div {
                     cursor: pointer;
                     display: block;
+                    padding-right: 1.5rem;
 
                     &::before {
                         content: '';
@@ -50,6 +88,7 @@
 
                     &[aria-hidden='true']::before {
                         transform: rotate(-45deg);
+                        top: 5px;
                     }
                 }
             }

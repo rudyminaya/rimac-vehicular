@@ -1,11 +1,15 @@
 @import '../../styles/variables';
 
 .subtotal {
-    display: grid;
-    grid-template-columns: 2fr 3fr;
     padding: 1rem 2rem;
     box-shadow: 0px 1px 4px rgba(163, 171, 204, 0.06),
         0px 8px 30px rgba(20, 43, 127, 0.1);
+    &__content {
+        display: grid;
+        grid-template-columns: 2fr 3fr;
+        max-width: 600px;
+        margin: 0 auto;
+    }
 
     &__summary {
         display: flex;
@@ -25,13 +29,17 @@
 }
 @media (min-width: 1024px) {
     .subtotal {
-        display: flex;
-        flex-direction: column;
         box-shadow: none;
-        width: 100%;
-        max-width: 350px;
-        min-height: 450px;
-        justify-content: flex-end;
+
+        &__content {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 350px;
+            min-height: 450px;
+            justify-content: flex-end;
+            margin: 0;
+        }
 
         &__summary {
             & > strong:first-child {

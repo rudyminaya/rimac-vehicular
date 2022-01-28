@@ -17,6 +17,10 @@
 @media (min-width: 1024px) {
     .rangeCoverage {
         padding: 1rem 0;
+    }
+}
+@media (min-width: 1420px) {
+    .rangeCoverage {
         display: grid;
         grid-template-columns: 7fr 5fr;
 
@@ -26,7 +30,7 @@
             flex-direction: column;
             &__items {
                 & > p {
-                    line-height: 4px !important;
+                    line-height: 1.2 !important;
                 }
             }
         }
