@@ -1,11 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import styles from './validateForm.module.scss'
-import {
-    useForm,
-    SubmitHandler,
-    SubmitErrorHandler,
-    FieldErrors,
-} from 'react-hook-form'
+import { useForm, SubmitHandler, SubmitErrorHandler } from 'react-hook-form'
 import { useMediaQuery } from 'react-responsive'
 import TextComponents from '../textComponents'
 import FontFamily from '../../styles/FontFamily'

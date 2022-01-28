@@ -39,7 +39,7 @@ const InfoThanks = (props: Props) => {
                     fontSize={'md'}
                 />
 
-                <a href={`mailto:${props.email}`}>
+                <a>
                     <TextComponents
                         texto={props.email}
                         color={Color.grayText}
