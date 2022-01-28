@@ -9,7 +9,7 @@
         text-align: center;
         padding: 0.5rem;
         font-family: $lato;
-        font-size: $sm;
+        font-size: $xs;
         text-transform: uppercase;
         transition: color ease-in-out 150ms;
         cursor: pointer;
@@ -21,5 +21,12 @@
 
     &__item {
         margin-top: 2rem;
+    }
+}
+@media (min-width: 1024px) {
+    .tabsCoverage {
+        &__tab {
+            font-size: $sm;
+        }
     }
 }

@@ -1,0 +1,75 @@
+@import '../../styles/variables';
+
+.subtotal {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    padding: 1rem 2rem;
+    box-shadow: 0px 1px 4px rgba(163, 171, 204, 0.06),
+        0px 8px 30px rgba(20, 43, 127, 0.1);
+
+    &__summary {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        pointer-events: none;
+        & > strong:first-child {
+            display: none;
+        }
+        & p {
+            line-height: 1.2 !important;
+        }
+    }
+    &__details {
+        display: none;
+    }
+}
+@media (min-width: 1024px) {
+    .subtotal {
+        display: flex;
+        flex-direction: column;
+        box-shadow: none;
+        width: 100%;
+        max-width: 350px;
+        min-height: 450px;
+        justify-content: flex-end;
+
+        &__summary {
+            & > strong:first-child {
+                display: block;
+            }
+            & p {
+                line-height: 1.5 !important;
+            }
+        }
+        &__details {
+            display: block;
+            margin: 1rem 0;
+            padding: 1rem 0;
+            border-top: 1px solid $grayBorder;
+            font-family: $lato;
+            font-size: $md;
+            color: $grayTitle;
+
+            &__item {
+                list-style: none;
+                color: $grayText;
+                padding: 0.5rem 0;
+
+                &:first-child {
+                    padding-top: 1rem;
+                }
+
+                &::before {
+                    content: '✓';
+                    color: $green;
+                    margin-right: 1rem;
+                }
+            }
+        }
+        &__conversion {
+            & > button {
+                width: 100% !important;
+            }
+        }
+    }
+}

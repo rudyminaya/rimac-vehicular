@@ -5,6 +5,7 @@ import DetailsCar from '../components/detailsCar'
 import styles from '../styles/armaTuPlan.module.scss'
 import RangeCoverage from '../components/rangeCoverage'
 import Coverage from '../components/coverage'
+import Subtotal from '../components/subtotal'
 
 const Cotizacion = () => {
     return (
@@ -40,7 +41,17 @@ const Cotizacion = () => {
                     <RangeCoverage minRange={12500} maxRange={16500} />
                     <Coverage />
                 </div>
-                <div></div>
+                <div className={styles.subtotal}>
+                    <Subtotal
+                        base={20}
+                        onClick={() => console.log('Boton de Conversión')}
+                        benefits={[
+                            'Llanta de respuesto',
+                            'Analisis de motor',
+                            'Aros gratis',
+                        ]}
+                    />
+                </div>
             </main>
         </>
     )

@@ -41,7 +41,8 @@
 }
 @media (min-width: 1024px) {
     .breadcrumb {
-        height: 100vh;
+        min-height: 100vh;
+        height: 100%;
         background: $graybg;
         display: flex;
         flex-direction: column;

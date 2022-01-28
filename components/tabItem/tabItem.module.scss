@@ -15,27 +15,6 @@
 
         &__header {
             width: 100%;
-            & > p {
-                cursor: pointer;
-                display: block;
-
-                &::before {
-                    content: '';
-                    width: 10px;
-                    height: 10px;
-                    border: 3px solid $redRimac;
-                    border-left: none;
-                    border-bottom: none;
-                    position: absolute;
-                    right: 1rem;
-                    top: 0;
-                    transform: rotate(135deg);
-                }
-
-                &[aria-hidden='true']::before {
-                    transform: rotate(-45deg);
-                }
-            }
         }
     }
     &__description {
@@ -49,4 +28,31 @@
     }
 }
 @media (min-width: 1024px) {
+    .tabItem {
+        &__content {
+            &__header {
+                & > p {
+                    cursor: pointer;
+                    display: block;
+
+                    &::before {
+                        content: '';
+                        width: 10px;
+                        height: 10px;
+                        border: 3px solid $redRimac;
+                        border-left: none;
+                        border-bottom: none;
+                        position: absolute;
+                        right: 1rem;
+                        top: 0;
+                        transform: rotate(135deg);
+                    }
+
+                    &[aria-hidden='true']::before {
+                        transform: rotate(-45deg);
+                    }
+                }
+            }
+        }
+    }
 }
